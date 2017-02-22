@@ -22,6 +22,9 @@ struct LLVM::DIBuilder
   end
 
   def create_file(file, dir)
+    if file == ""
+      raise "onoes!"
+    end
     LibLLVMExt.di_builder_create_file(self, file, dir)
   end
 

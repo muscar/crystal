@@ -59,7 +59,8 @@ module Crystal
       end
     end
 
-    def codegen(node, single_module = false, debug = Debug::Default, expose_crystal_main = true)
+    def codegen(node, filename = nil, single_module = false, debug = Debug::Default, expose_crystal_main = true)
+      self.filename = filename
       visitor = CodeGenVisitor.new self, node, single_module: single_module, debug: debug, expose_crystal_main: expose_crystal_main
       node.accept visitor
       visitor.process_finished_hooks
